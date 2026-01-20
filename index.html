@@ -80,6 +80,11 @@
             color: #000;
         }
         
+        .result-value.big {
+            font-size: 36px;
+            color: #000;
+        }
+        
         .discount-table {
             width: 100%;
             margin: 15px 0;
@@ -96,16 +101,6 @@
         .discount-table th {
             background: #555;
             color: white;
-        }
-        
-        .calculation-breakdown {
-            background: #e8f4f8;
-            padding: 15px;
-            margin-top: 15px;
-        }
-        
-        .calculation-breakdown div {
-            margin: 5px 0;
         }
         
         .grid-3 {
@@ -182,32 +177,12 @@
                         <label for="originalAmount">Original Amount:</label>
                         <input type="number" id="originalAmount" placeholder="Enter amount" step="0.01">
                     </div>
-                    
-                    <div class="input-group">
-                        <label for="additionalDiscount">Additional Discount (%):</label>
-                        <input type="number" id="additionalDiscount" placeholder="Optional" step="0.01" value="0">
-                    </div>
-                </div>
-                
-                <div class="calculation-breakdown" id="calculationBreakdown">
-                    <strong>Calculation Breakdown:</strong>
-                    <div id="breakdownContent">Enter values to see calculation...</div>
                 </div>
                 
                 <div class="grid-3" style="margin-top: 20px;">
                     <div class="result">
-                        <div class="result-label">Net Multiple:</div>
-                        <div class="result-value" id="netMultiple">-</div>
-                    </div>
-                    
-                    <div class="result">
-                        <div class="result-label">Total Discount:</div>
-                        <div class="result-value" id="totalDiscount">-</div>
-                    </div>
-                    
-                    <div class="result">
                         <div class="result-label">Final Amount:</div>
-                        <div class="result-value" id="finalAmount">-</div>
+                        <div class="result-value big" id="finalAmount">-</div>
                     </div>
                 </div>
                 
@@ -222,24 +197,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>A</td><td>50%</td><td>0.50</td></tr>
-                            <tr><td>B</td><td>45%</td><td>0.55</td></tr>
-                            <tr><td>C</td><td>40%</td><td>0.60</td></tr>
-                            <tr><td>D</td><td>35%</td><td>0.65</td></tr>
-                            <tr><td>E</td><td>30%</td><td>0.70</td></tr>
-                            <tr><td>F</td><td>25%</td><td>0.75</td></tr>
-                            <tr><td>G</td><td>20%</td><td>0.80</td></tr>
-                            <tr><td>H</td><td>15%</td><td>0.85</td></tr>
-                            <tr><td>I</td><td>10%</td><td>0.90</td></tr>
-                            <tr><td>P</td><td>50%</td><td>0.50</td></tr>
-                            <tr><td>Q</td><td>45%</td><td>0.55</td></tr>
-                            <tr><td>R</td><td>40%</td><td>0.60</td></tr>
-                            <tr><td>S</td><td>35%</td><td>0.65</td></tr>
-                            <tr><td>T</td><td>30%</td><td>0.70</td></tr>
-                            <tr><td>U</td><td>25%</td><td>0.75</td></tr>
-                            <tr><td>V</td><td>20%</td><td>0.80</td></tr>
-                            <tr><td>W</td><td>15%</td><td>0.85</td></tr>
-                            <tr><td>X</td><td>10%</td><td>0.90</td></tr>
+                            <tr><td>A / P</td><td>50%</td><td>0.50</td></tr>
+                            <tr><td>B / Q</td><td>45%</td><td>0.55</td></tr>
+                            <tr><td>C / R</td><td>40%</td><td>0.60</td></tr>
+                            <tr><td>D / S</td><td>35%</td><td>0.65</td></tr>
+                            <tr><td>E / T</td><td>30%</td><td>0.70</td></tr>
+                            <tr><td>F / U</td><td>25%</td><td>0.75</td></tr>
+                            <tr><td>G / V</td><td>20%</td><td>0.80</td></tr>
+                            <tr><td>H / W</td><td>15%</td><td>0.85</td></tr>
+                            <tr><td>I / X</td><td>10%</td><td>0.90</td></tr>
                         </tbody>
                     </table>
                 </details>
@@ -353,51 +319,17 @@
         function calculateDiscount() {
             var letter = document.getElementById('discountLetter').value;
             var amount = parseFloat(document.getElementById('originalAmount').value);
-            var additionalDiscount = parseFloat(document.getElementById('additionalDiscount').value) || 0;
             
             if (!letter || isNaN(amount)) {
-                document.getElementById('netMultiple').textContent = '-';
-                document.getElementById('totalDiscount').textContent = '-';
                 document.getElementById('finalAmount').textContent = '-';
-                document.getElementById('breakdownContent').innerHTML = 'Enter values to see calculation...';
                 return;
             }
             
             var letterData = discountLetters[letter];
-            var baseDiscount = letterData.discount;
             var baseMultiple = letterData.multiple;
+            var finalAmountValue = amount * baseMultiple;
             
-            var finalMultiple = baseMultiple;
-            var amountAfterBase = amount * baseMultiple;
-            var totalDiscountPercent = baseDiscount;
-            var finalAmountValue = amountAfterBase;
-            
-            if (additionalDiscount > 0) {
-                var additionalMultiple = (100 - additionalDiscount) / 100;
-                finalMultiple = baseMultiple * additionalMultiple;
-                finalAmountValue = amountAfterBase * additionalMultiple;
-                totalDiscountPercent = (1 - finalMultiple) * 100;
-            }
-            
-            var totalDiscountAmount = amount - finalAmountValue;
-            
-            document.getElementById('netMultiple').textContent = finalMultiple.toFixed(4);
-            document.getElementById('totalDiscount').textContent = totalDiscountPercent.toFixed(2) + '%';
-            document.getElementById('finalAmount').textContent = '$' + finalAmountValue.toFixed(4);
-            
-            var breakdown = '<div><strong>Original Amount:</strong> $' + amount.toFixed(2) + '</div>';
-            breakdown += '<div><strong>Base Discount (' + letter + '):</strong> ' + baseDiscount + '% (Net Multiple: ' + baseMultiple + ')</div>';
-            breakdown += '<div><strong>After Base Discount:</strong> $' + amountAfterBase.toFixed(2) + '</div>';
-            
-            if (additionalDiscount > 0) {
-                breakdown += '<div><strong>Additional Discount:</strong> ' + additionalDiscount + '%</div>';
-                breakdown += '<div><strong>Final Net Multiple:</strong> ' + finalMultiple.toFixed(4) + '</div>';
-            }
-            
-            breakdown += '<div style="margin-top: 10px; padding-top: 10px; border-top: 2px solid #555;">';
-            breakdown += '<strong>Total Discount Amount:</strong> $' + totalDiscountAmount.toFixed(2) + '</div>';
-            
-            document.getElementById('breakdownContent').innerHTML = breakdown;
+            document.getElementById('finalAmount').textContent = '$' + finalAmountValue.toFixed(2);
         }
         
         document.getElementById('decimalInput').addEventListener('input', function(e) {
@@ -410,7 +342,6 @@
         
         document.getElementById('discountLetter').addEventListener('change', calculateDiscount);
         document.getElementById('originalAmount').addEventListener('input', calculateDiscount);
-        document.getElementById('additionalDiscount').addEventListener('input', calculateDiscount);
     </script>
 </body>
 </html>
