@@ -154,18 +154,27 @@
                 
                 <div class="grid-3">
                     <div class="input-group">
-                        <label for="discountCode">Discount Code:</label>
-                        <select id="discountCode">
-                            <option value="">Select Code</option>
-                            <option value="AP">AP - 50%</option>
-                            <option value="BQ">BQ - 45%</option>
-                            <option value="CR">CR - 40%</option>
-                            <option value="DS">DS - 35%</option>
-                            <option value="ET">ET - 30%</option>
-                            <option value="FU">FU - 25%</option>
-                            <option value="GV">GV - 20%</option>
-                            <option value="HW">HW - 15%</option>
-                            <option value="IX">IX - 10%</option>
+                        <label for="discountLetter">Discount Letter:</label>
+                        <select id="discountLetter">
+                            <option value="">Select Letter</option>
+                            <option value="A">A - 50%</option>
+                            <option value="B">B - 45%</option>
+                            <option value="C">C - 40%</option>
+                            <option value="D">D - 35%</option>
+                            <option value="E">E - 30%</option>
+                            <option value="F">F - 25%</option>
+                            <option value="G">G - 20%</option>
+                            <option value="H">H - 15%</option>
+                            <option value="I">I - 10%</option>
+                            <option value="P">P - 50%</option>
+                            <option value="Q">Q - 45%</option>
+                            <option value="R">R - 40%</option>
+                            <option value="S">S - 35%</option>
+                            <option value="T">T - 30%</option>
+                            <option value="U">U - 25%</option>
+                            <option value="V">V - 20%</option>
+                            <option value="W">W - 15%</option>
+                            <option value="X">X - 10%</option>
                         </select>
                     </div>
                     
@@ -203,25 +212,34 @@
                 </div>
                 
                 <details style="margin-top: 20px;">
-                    <summary style="cursor: pointer; font-weight: bold;">View Discount Code Reference</summary>
+                    <summary style="cursor: pointer; font-weight: bold;">View Discount Letter Reference</summary>
                     <table class="discount-table">
                         <thead>
                             <tr>
-                                <th>Code</th>
+                                <th>Letter</th>
                                 <th>Discount %</th>
                                 <th>Net Multiple</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>AP</td><td>50%</td><td>0.50</td></tr>
-                            <tr><td>BQ</td><td>45%</td><td>0.55</td></tr>
-                            <tr><td>CR</td><td>40%</td><td>0.60</td></tr>
-                            <tr><td>DS</td><td>35%</td><td>0.65</td></tr>
-                            <tr><td>ET</td><td>30%</td><td>0.70</td></tr>
-                            <tr><td>FU</td><td>25%</td><td>0.75</td></tr>
-                            <tr><td>GV</td><td>20%</td><td>0.80</td></tr>
-                            <tr><td>HW</td><td>15%</td><td>0.85</td></tr>
-                            <tr><td>IX</td><td>10%</td><td>0.90</td></tr>
+                            <tr><td>A</td><td>50%</td><td>0.50</td></tr>
+                            <tr><td>B</td><td>45%</td><td>0.55</td></tr>
+                            <tr><td>C</td><td>40%</td><td>0.60</td></tr>
+                            <tr><td>D</td><td>35%</td><td>0.65</td></tr>
+                            <tr><td>E</td><td>30%</td><td>0.70</td></tr>
+                            <tr><td>F</td><td>25%</td><td>0.75</td></tr>
+                            <tr><td>G</td><td>20%</td><td>0.80</td></tr>
+                            <tr><td>H</td><td>15%</td><td>0.85</td></tr>
+                            <tr><td>I</td><td>10%</td><td>0.90</td></tr>
+                            <tr><td>P</td><td>50%</td><td>0.50</td></tr>
+                            <tr><td>Q</td><td>45%</td><td>0.55</td></tr>
+                            <tr><td>R</td><td>40%</td><td>0.60</td></tr>
+                            <tr><td>S</td><td>35%</td><td>0.65</td></tr>
+                            <tr><td>T</td><td>30%</td><td>0.70</td></tr>
+                            <tr><td>U</td><td>25%</td><td>0.75</td></tr>
+                            <tr><td>V</td><td>20%</td><td>0.80</td></tr>
+                            <tr><td>W</td><td>15%</td><td>0.85</td></tr>
+                            <tr><td>X</td><td>10%</td><td>0.90</td></tr>
                         </tbody>
                     </table>
                 </details>
@@ -230,16 +248,25 @@
     </div>
     
     <script>
-        var discountCodes = {
-            'AP': { discount: 50, multiple: 0.50 },
-            'BQ': { discount: 45, multiple: 0.55 },
-            'CR': { discount: 40, multiple: 0.60 },
-            'DS': { discount: 35, multiple: 0.65 },
-            'ET': { discount: 30, multiple: 0.70 },
-            'FU': { discount: 25, multiple: 0.75 },
-            'GV': { discount: 20, multiple: 0.80 },
-            'HW': { discount: 15, multiple: 0.85 },
-            'IX': { discount: 10, multiple: 0.90 }
+        var discountLetters = {
+            'A': { discount: 50, multiple: 0.50 },
+            'B': { discount: 45, multiple: 0.55 },
+            'C': { discount: 40, multiple: 0.60 },
+            'D': { discount: 35, multiple: 0.65 },
+            'E': { discount: 30, multiple: 0.70 },
+            'F': { discount: 25, multiple: 0.75 },
+            'G': { discount: 20, multiple: 0.80 },
+            'H': { discount: 15, multiple: 0.85 },
+            'I': { discount: 10, multiple: 0.90 },
+            'P': { discount: 50, multiple: 0.50 },
+            'Q': { discount: 45, multiple: 0.55 },
+            'R': { discount: 40, multiple: 0.60 },
+            'S': { discount: 35, multiple: 0.65 },
+            'T': { discount: 30, multiple: 0.70 },
+            'U': { discount: 25, multiple: 0.75 },
+            'V': { discount: 20, multiple: 0.80 },
+            'W': { discount: 15, multiple: 0.85 },
+            'X': { discount: 10, multiple: 0.90 }
         };
         
         function gcd(a, b) {
@@ -324,11 +351,11 @@
         }
         
         function calculateDiscount() {
-            var code = document.getElementById('discountCode').value;
+            var letter = document.getElementById('discountLetter').value;
             var amount = parseFloat(document.getElementById('originalAmount').value);
             var additionalDiscount = parseFloat(document.getElementById('additionalDiscount').value) || 0;
             
-            if (!code || isNaN(amount)) {
+            if (!letter || isNaN(amount)) {
                 document.getElementById('netMultiple').textContent = '-';
                 document.getElementById('totalDiscount').textContent = '-';
                 document.getElementById('finalAmount').textContent = '-';
@@ -336,9 +363,9 @@
                 return;
             }
             
-            var codeData = discountCodes[code];
-            var baseDiscount = codeData.discount;
-            var baseMultiple = codeData.multiple;
+            var letterData = discountLetters[letter];
+            var baseDiscount = letterData.discount;
+            var baseMultiple = letterData.multiple;
             
             var finalMultiple = baseMultiple;
             var amountAfterBase = amount * baseMultiple;
@@ -359,7 +386,7 @@
             document.getElementById('finalAmount').textContent = '$' + finalAmountValue.toFixed(4);
             
             var breakdown = '<div><strong>Original Amount:</strong> $' + amount.toFixed(2) + '</div>';
-            breakdown += '<div><strong>Base Discount (' + code + '):</strong> ' + baseDiscount + '% (Net Multiple: ' + baseMultiple + ')</div>';
+            breakdown += '<div><strong>Base Discount (' + letter + '):</strong> ' + baseDiscount + '% (Net Multiple: ' + baseMultiple + ')</div>';
             breakdown += '<div><strong>After Base Discount:</strong> $' + amountAfterBase.toFixed(2) + '</div>';
             
             if (additionalDiscount > 0) {
@@ -381,7 +408,7 @@
             document.getElementById('decimalResult').textContent = fractionToDecimal(e.target.value);
         });
         
-        document.getElementById('discountCode').addEventListener('change', calculateDiscount);
+        document.getElementById('discountLetter').addEventListener('change', calculateDiscount);
         document.getElementById('originalAmount').addEventListener('input', calculateDiscount);
         document.getElementById('additionalDiscount').addEventListener('input', calculateDiscount);
     </script>
