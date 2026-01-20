@@ -329,22 +329,7 @@
             var baseMultiple = letterData.multiple;
             var finalAmountValue = amount * baseMultiple;
             
-            document.getElementById('finalAmount').textContent = '
-        }
-        
-        document.getElementById('decimalInput').addEventListener('input', function(e) {
-            document.getElementById('fractionResult').textContent = decimalToFraction(e.target.value);
-        });
-        
-        document.getElementById('fractionInput').addEventListener('input', function(e) {
-            document.getElementById('decimalResult').textContent = fractionToDecimal(e.target.value);
-        });
-        
-        document.getElementById('discountLetter').addEventListener('change', calculateDiscount);
-        document.getElementById('originalAmount').addEventListener('input', calculateDiscount);
-    </script>
-</body>
-</html> + finalAmountValue.toFixed(4);
+            document.getElementById('finalAmount').textContent = '$' + finalAmountValue.toFixed(4);
         }
         
         document.getElementById('decimalInput').addEventListener('input', function(e) {
